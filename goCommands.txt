@@ -1,0 +1,18 @@
+Here we will get few go commands:
+1. To build go file
+   go build <filename.go>
+It would compile and make a executable in that folder only.
+
+2. Tor run the go file,
+   go run <filename.go>
+this would output on the terminal only.
+
+3. To make a module,
+   go mod init <domainname.com/username/repo>  // You can give any other name
+
+4. To test go file in one project
+   go test
+
+5. To list all the modules/dependencies
+   go list -m all
+   

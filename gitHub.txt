@@ -1,0 +1,4 @@
+Git Hub : Version Controlled System.
+Repository: We can make repository for different purposes. It organizes code and tracks the changes.
+ 
+

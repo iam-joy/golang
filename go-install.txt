@@ -1,0 +1,38 @@
+##############
+1.Hey first install go from 
+URL : https://golang.org/dl/
+Package : https://dl.google.com/go/go1.13.darwin-amd64.pkg
+Install GO
+
+2. Check the path where it installed
+
+3. Make a separate folder for running go programs
+
+4. Use you git-hub.com/user, for example :
+github.com/iam-joy
+
+5. Set environment variables:
+go env GOPATH
+PATH=$PATH:$(go env GOPATH)/bin
+
+
+5. Create a go file and execute it through go
+Example:
+==>~/go/src/github.com/iam-joy/golang$cat hello.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, world.")
+}
+
+6. Execution commands:
+go install hello.go
+
+7. To run the executable:
+
+==>~/go/src/github.com/iam-joy/golang$hello
+Hello, world.
+
+

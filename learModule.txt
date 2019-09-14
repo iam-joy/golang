@@ -1,0 +1,54 @@
+Creating a new module
+
+Let's create a new module.
+
+Create a new, empty directory somewhere outside $GOPATH/src, cd into that directory, and then create a new source file, hello.go:
+
+package hello
+
+func Hello() string {
+    return "Hello, world."
+}
+
+Let's write a test, too, in hello_test.go:
+
+package hello
+
+import "testing"
+
+func TestHello(t *testing.T) {
+    want := "Hello, world."
+    if got := Hello(); got != want {
+        t.Errorf("Hello() = %q, want %q", got, want)
+    }
+}
+
+At this point, the directory contains a package, but not a module, because there is no go.mod file. If we were working in /home/gopher/hello and ran go test now, we'd see:
+
+$ go test
+PASS
+ok      _/home/gopher/hello    0.020s
+$
+
+The last line summarizes the overall package test. Because we are working outside $GOPATH and also outside any module, the go command knows no import path for the current directory and makes up a fake one based on the directory name: _/home/gopher/hello.
+
+Let's make the current directory the root of a module by using go mod init and then try go test again:
+
+$ go mod init example.com/hello
+go: creating new go.mod: module example.com/hello
+$ go test
+PASS
+ok      example.com/hello    0.020s
+$
+
+Congratulations! You’ve written and tested your first module.
+
+The go mod init command wrote a go.mod file:
+
+$ cat go.mod
+module example.com/hello
+
+go 1.12
+$
+
+The go.mod file only appears in the root of the module. Packages in subdirectories have import paths consisting of the module path plus the path to the subdirectory. For example, if we created a subdirectory world, we would not need to (nor want to) run go mod init there. The package would automatically be recognized as part of the example.com/hello module, with import path example.com/hello/world. 
